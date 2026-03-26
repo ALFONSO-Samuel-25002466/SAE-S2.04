@@ -1,0 +1,53 @@
+Machine = (id_Machine INT, nom VARCHAR(50)); 
+
+Modèle = (id_Modele INT, Entretien VARCHAR(50), Périodicité VARCHAR(50)); 
+
+Organisme = (nom_O VARCHAR(50), Numero_SIRET VARCHAR(50)); 
+
+Composant = (id_Composant INT, nom_ingredient VARCHAR(50), type_ingredient VARCHAR(50), légume LOGICAL, alergène VARCHAR(50)); 
+
+Sauce = (Nom VARCHAR(50)); 
+
+légume = (#id_Composant, vérifier LOGICAL); 
+
+Ingrédient = (id_I INT, #id_Composant); 
+
+organisation = (id_Organisation INT); 
+
+Grade = (nom_G VARCHAR(50), #nom_G_1*); 
+
+Titre = (nom_T VARCHAR(50), #nom_T_1*); 
+
+Dignité = (nom_D VARCHAR(50), #nom_D_1*); 
+
+Rang = (nom_R VARCHAR(50), #nom_R_1*); 
+
+Historique = (id_H INT, date_ DATE, #id_Machine); 
+
+Tenrac = (id_T INT, nom VARCHAR(50), courriel VARCHAR(50), num_tel INT, adr VARCHAR(50), RFID VARCHAR(50), #id_Organisation, #nom_O, #nom_R, #nom_G, #nom_T, #nom_D); 
+
+Ordre = (nom_Ordre VARCHAR(50), #id_Organisation); 
+
+Adresses = (Nom_A VARCHAR(50), #nom_Ordre); 
+
+Plats = (id_P INT, Raclette VARCHAR(50), #(#id_Composant)*); 
+
+Club = (nom_Club VARCHAR(50), #nom_Ordre*, #id_Organisation); 
+
+Repas = (Id_R INT, Nom VARCHAR(50), Date_ DATETIME, #Nom_A); 
+
+Partager = (#id_T, #Id_R); 
+
+Comporter = (#Id_R, #id_P); 
+
+Certif = (#id_T, #id_Machine); 
+
+Type = (#id_Machine, #id_Modele); 
+
+Assembler = (#id_Composant, #Nom); 
+
+Composer = (#id_P, #id_I); 
+
+Extra = (#id_P, #Nom); 
+
+Stocker = (#id_Organisation, #id_H); 
